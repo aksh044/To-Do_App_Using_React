@@ -1,10 +1,16 @@
 // PrintData.jsx
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { TiDeleteOutline } from "react-icons/ti";
 import { RiCheckboxBlankCircleLine } from "react-icons/ri";
+import { ToDoContext } from "../store/ToDoContext";
+import { useContext } from "react";
 
-const PrintData = ({ text, deletefromlist }) => {
+const PrintData = () => {
+
+  const {text}=useContext(ToDoContext);
+  const {deletefromlist}=useContext(ToDoContext);
+
   const toggleClass = (event) => {
     event.target.classList.toggle("checked");
   };
@@ -29,8 +35,5 @@ const PrintData = ({ text, deletefromlist }) => {
   );
 };
 
-PrintData.propTypes = {
-  text: PropTypes.array.isRequired,
-};
 
 export default PrintData;

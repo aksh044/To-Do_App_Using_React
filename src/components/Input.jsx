@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 // import React from "react";
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { IoMdAddCircle } from "react-icons/io";
+import { ToDoContext } from "../store/ToDoContext";
 
-const Input = ({ setNewValue }) => {
+const Input = () => {
   // let [text, settext] = useState("");
+  // const {text}=useContext(ToDoContext)
+  const {setNewValue}=useContext(ToDoContext)
   const inputref = useRef();
 
   const addtolist = () => {
