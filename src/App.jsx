@@ -13,9 +13,10 @@ function App() {
   let [text, settext] = useState([]);
 
 const setNewValue=(val)=>{
-
-  const newdata= [...text,val]
-  settext(newdata);
+  settext((current)=>[
+    ...current,
+    val
+  ])
 }
 
 const deletefromlist=(index)=>{
@@ -23,8 +24,6 @@ const deletefromlist=(index)=>{
   newdata.splice(index,1)
   settext(newdata);
 }
-  
-
 
   return (
     <>

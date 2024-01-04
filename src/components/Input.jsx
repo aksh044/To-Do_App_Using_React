@@ -1,33 +1,29 @@
 /* eslint-disable no-unused-vars */
 // import React from "react";
-import React, { useState } from "react";
+import React, { useRef } from "react";
+import { IoMdAddCircle } from "react-icons/io";
 
 const Input = ({ setNewValue }) => {
-  let [text, settext] = useState("");
+  // let [text, settext] = useState("");
+  const inputref = useRef();
 
   const addtolist = () => {
-    setNewValue(text);
-    settext("");
+    const val = inputref.current.value;
+    setNewValue(val);
+    inputref.current.value = "";
   };
 
-  const valueChanged = (event) => {
-    settext(event.target.value);
+  const enter = (event) => {
+    // console.log(event.key)
+    if (event.key === "Enter") {
+      addtolist();
+    }
   };
-
- const enter=(event)=>{
-// console.log(event.key)
-if(event.key==="Enter"){
-  addtolist()
-}
-
-}
 
   return (
     <div className="inputbox">
-      <input type="text" id="input" value={text} onChange={valueChanged} onKeyDown={enter}/>
-      <button id="add" onClick={addtolist} placeholder="hi">
-        ADD
-      </button>
+      <input type="text" id="input" ref={inputref} onKeyDown={enter} />
+      <IoMdAddCircle onClick={addtolist} className="custom-icon-add" />
     </div>
   );
 };

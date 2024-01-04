@@ -84,6 +84,11 @@ h1 {
 }
 
 p {
+  vertical-align: middle;
+  margin-bottom: 1rem;
+  /* vertical-align: middle; */
+  /* margin: 7px; */
+  text-align: left;
   color: #fff;
   float: left;
   flex-grow: 1;
@@ -95,8 +100,8 @@ p {
 
 span {
   cursor: pointer;
-  color: #ff0000;
-  font-weight: bold;
+  color: #980e0e;;
+  /* font-weight: bold; */
   font-size: 30px;
   padding-right: 15px;
   /* font-size: large; */
@@ -105,7 +110,18 @@ span {
 /* Checked item styles */
 .checked {
   text-decoration: line-through;
-  color: #888;
+  color: #ff0000c9;
+}
+
+.custom-icon-add {
+  color: #ffffff94;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+.custom-icon-delete {
+  font-size: 30px;
+  color: #980e0e;
 }
 
 /* Responsive styles */
