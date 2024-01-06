@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 // import reactLogo from "./assets/react.svg";
 // import viteLogo from "/vite.svg";
 import { ToDoContext } from "./store/ToDoContext";
@@ -10,16 +10,45 @@ import Input from "./components/Input";
 import PrintData from "./components/PrintData";
 
 function App() {
-  let [text, settext] = useState([]);
+  // let [text, settext] = useState([]);
+  
+
+  const changevalue=(curtext,action)=>{
+    let newtext=curtext;
+    if(action.type==="Add_item")
+    {
+      newtext= [...curtext, action.payload.val];
+    }
+    else if(action.type==="delete_item"){
+      newtext = [...curtext];
+      newtext.splice(action.payload.index, 1);
+      // newtext=newdata;
+    }
+    return newtext;
+  }
+
+let [text, disapatchText] = useReducer(changevalue, [])
 
   const setNewValue = (val) => {
-    settext((current) => [...current, val]);
+    const adddata={
+      type : "Add_item",
+      payload : {
+        val
+      },
+    }
+    disapatchText(adddata);
   };
 
   const deletefromlist = (index) => {
-    const newdata = [...text];
-    newdata.splice(index, 1);
-    settext(newdata);
+    const deleteData={
+      type : "delete_item",
+      payload : {
+        index
+      },
+    }
+    disapatchText(deleteData);
+
+    
   };
 
   return (
